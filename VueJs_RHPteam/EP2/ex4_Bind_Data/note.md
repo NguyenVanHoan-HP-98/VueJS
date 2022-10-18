@@ -1,0 +1,1 @@
+Muốn làm việc qua các atribute của thẻ HTML thì cần dùng bind

@@ -1,0 +1,1 @@
+Tất cả dữ liệu khi truyền qua HTML đều là dữ liệu thô (TEXT)
