@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS </title>
+    <style>
+        .vuong{
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+            display: inline-block;
+            margin: 10px;
+        }
+        .do
+        {
+            background-color: red;
+        }
+        .xanhduong{
+            background-color: blue;
+        }
+        .xanhcay{
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13"></script>
+    <div id = "app">
+      <div class="vuong" @click ="quanlido = !quanlido" :class = "{do: quanlido}"></div>
+      <div class="vuong" :class = "{do: quanlido}"></div>
+      <div class="vuong" :class="[color,{do: quanlido}]"></div>
+      <hr>
+      <input type="text" v-model="color">
+    </div>
+</body>
+<script>
+    new Vue(
+        {
+            el: "#app",
+            data:{
+               quanlido : false,
+               color : 'xanhcay'
+            },
+            // computed:{
+            //     divClasser(){
+            //         console.log("Nhảy vào divClasser trong computed")
+            //         return{      
+            //             do: this.quanlido,
+            //             xanhduong: !this.quanlido
+            //         }
+            //     }
+            // },
+            methods:{
+               
+            }
+        }
+    );
+</script>
+</html>

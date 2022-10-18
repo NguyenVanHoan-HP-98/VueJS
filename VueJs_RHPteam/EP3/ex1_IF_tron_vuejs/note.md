@@ -1,0 +1,1 @@
+if -> xóa luôn element đi

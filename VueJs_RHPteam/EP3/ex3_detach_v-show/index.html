@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS </title>
+    
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13"></script>
+    <div id = "app">
+       <template v-if = "xacdinh">
+        <div>Menu1</div>
+        <div>Menu1</div>
+        <div>Menu1</div>
+        <div>Menu1</div>
+        <div>Menu1</div>
+       </template>
+       <hr>
+       <div  v-show = "xacdinh">Menu2</div>
+    <button @click = "xacdinh = !xacdinh">
+        Nhấn để ẩn
+    </button>
+    </div>
+</body>
+<script>
+   new Vue(
+        {
+            el: "#app",
+            data:{
+               xacdinh : true
+            },
+           
+            methods:{
+               
+            }
+        }
+    );
+</script>
+</html>

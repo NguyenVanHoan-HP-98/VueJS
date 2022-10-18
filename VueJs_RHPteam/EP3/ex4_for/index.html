@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS </title>
+    
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13"></script>
+    <div id = "app">
+       <ul>
+        <li v-for = "menu in menus">{{menu}}</li>
+       </ul>
+       <hr>
+       <ul>
+        <li v-for = "(menu,i) in menus">{{menu}} với index là {{i}}</li>
+       </ul>
+        <hr>
+        <ul>
+            <li v-for="student in students">{{student.name}}
+                <div v-for = "(value, key, index) in student">{{index}} => {{key}}:{{value}}</div>
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for = "(datas,idx) in pushdata">Data {{datas}} index {{idx}}</li>
+        </ul>
+        <button @click = "pushdata.push('test')">Push</button>
+    </div>
+</body>
+<script>
+   new Vue(
+        {
+            el: "#app",
+            data:{
+               menus:['Home','About','Blog','Concat'],
+               students:[
+                {name : 'Nguyễn Văn A', age : 120 , class: 'CNTT'},
+                {name : 'Nguyễn Văn B', age : 110 , class: 'ATTT'},
+                {name : 'Nguyễn Văn C', age : 100 , class: 'HNTT'}
+               ],
+               pushdata:[
+                    'X'
+               ]
+            },
+           
+            methods:{
+               
+            }
+        }
+    );
+</script>
+</html>
