@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VueJS </title>
+    
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.13"></script>
+    <div id = "app"> 
+       <p>{{tanga}}</p>
+       <p>{{tangb}}</p>
+       <button v-on:click = "a++" >Tăng giá trị a</button>
+       <button v-on:click = "b++" >Tăng giá trị b</button>
+    </div>
+</body>
+<script>
+    new Vue(
+        {
+            el: "#app",
+            data:{
+                a:0,
+                b:0
+            },
+            computed:{
+                tanga(){
+                    console.log("Gọi vào hàm tăng a");
+                    return this.a;
+                },
+                tangb(){
+                    console.log("Gọi vào hàm tăng b");
+                    return this.b;
+                }
+            },
+            methods:{
+               
+            }
+        }
+    );
+</script>
+</html>
