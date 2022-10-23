@@ -4,7 +4,8 @@ new Vue(
         data: {
             playerHealth: 100,
             monsterHealth: 100,
-            gameIsRunning: false
+            gameIsRunning: false,
+            turns: []
         },
         methods: {
             startNewgame()
@@ -13,28 +14,50 @@ new Vue(
                 this.playerHealth = 100;
                 this.monsterHealth = 100;
             },
-            attack()
-            {
-                if (this.checkPlayerOption())
-                {
+            attack() {
+                /* if (this.checkPlayerOption()) {
                     return;
-                    }
+                } */
+                
                 //monster
-               
-                this.monsterHealth -= this.inputDamage(4,10);
-                //Player
+                damage = this.inputDamage(4, 12);
+                if (this.monsterHealth < damage)
+                {
+                    this.monsterHealth = 0;
+                     this.turns.unshift({
+                        isPlayer: true,
+                        textLog: 'Player hits Monster for ' + this.monsterHealth
+                     }); 
+                }
+                else
+                {
+                    this.monsterHealth -= damage;
+                    this.turns.unshift({
+                        isPlayer: true,
+                        textLog: 'Player hits Monster for ' + damage
+                    });
+                     
+                }  
+                this.checkPlayerOption('monsterHealth', this.monsterHealth);
+                 //Player
                 this.monsterAttacks();
+                console.log('playerHealth: ' + this.playerHealth);
+                console.log('monsterHealth: ' + this.monsterHealth);
             },
             specialattack()
             {
 
-                if (this.checkPlayerOption())
+               /*  if (this.checkPlayerOption())
                 {
                     return;
-                    }
+                    } */
                 //monster
-               
-                this.monsterHealth -= this.inputDamage(10,20);
+                damage = this.inputDamage(10, 20);
+                this.monsterHealth -= damage;
+                this.turns.unshift({
+                    isPlayer: true,
+                    textLog: 'Player hits Player for ' + damage
+                });
                 //Player
                 this.monsterAttacks();
             },
@@ -59,16 +82,33 @@ new Vue(
             },
             monsterAttacks()
             {
-                this.playerHealth -= this.inputDamage(5, 12);
-                this.checkPlayerOption();
+                damage = this.inputDamage(5, 10);
+                if (this.playerHealth < damage)
+                {
+                    this.playerHealth = 0;
+                    this.turns.unshift({
+                    isPlayer: false,
+                    textLog: 'Monster hits Player for ' + this.playerHealth
+                    });
+                }
+                else
+                {
+                    this.playerHealth -= damage;
+                    this.turns.unshift({
+                    isPlayer: false,
+                    textLog: 'Monster hits Player for ' + damage
+                    });
+                }
+                
+                 this.checkPlayerOption('playerHealth', this.playerHealth);
             },
             inputDamage(minDamage, maxDamage)
             {
                 return Math.max(Math.floor(Math.random() * maxDamage) + 1, minDamage);
             },
-            checkPlayerOption()
+            checkPlayerOption(player, x)
             {
-                if (this.monsterHealth <= 0)
+                if (player == 'monsterHealth' && x == 0)
                 {
                     if (confirm("You won! New game"))
                     {
@@ -79,7 +119,8 @@ new Vue(
                         this.gameIsRunning = false;                       
                     }
                     return true;
-                } else if(this.playerHealth <= 0)
+                }
+                if (player == 'playerHealth' && x == 0)
                 {
                     
                     if (confirm("You Lost! New game"))

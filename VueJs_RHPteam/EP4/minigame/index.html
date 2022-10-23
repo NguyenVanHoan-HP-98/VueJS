@@ -16,7 +16,7 @@
             <div class="healthbar">
                 <div class="healthbar text-center" style="background-color: red; margin: 0; 
                 color: white;" :style ="{width: playerHealth + '%'}">
-                    
+                    {{playerHealth}}
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
             <div class="healthbar">
                 <div class="healthbar text-center" style="background-color: red; margin: 0; 
                 color: white;" :style ="{width: monsterHealth + '%'}">
-                   
+                {{monsterHealth}}
                 </div>
             </div>
         </div>
@@ -48,8 +48,9 @@
     <section class="row log">
         <div class="small-12 columns">
             <ul>
-                <li>
-
+                <li v-for ="turn in turns"
+                :class="{'player-turn' : turn.isPlayer,'monster-turn' : !turn.isPlayer}">
+                    {{turn.textLog}}
                 </li>
             </ul>
         </div>
